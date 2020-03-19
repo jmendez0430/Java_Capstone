@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Invoice Creator</title>
+<link href="WebStyling.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div align="center">
+	<h1>Invoice Creator</h1>
+	<a href="/new">Create New Invoice</a>
+	<br/><br/>
+	<table border = "1" cellpadding = "10">
+	
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "job : ${listJobs}">
+				<td th:text = "${job.code}"> Code </td>
+				<td th:text = "${job.description}"> Description </td>
+				<td th:text = "${job.price}"> Price </td>
+				<td>
+					<a th:href="@{'/edit/' + ${job.code}}"><button onclick="confirm('Are you sure you want to Edit?')">Edit</button></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${job.code}}"><button onclick="confirm('Are you sure you want to Delete?')">Delete</button></a>
+					
+					
+					
+				</td>
+								
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>
+<a title="print screen" alt= "print screen" onclick="window.print(); "target="_blank" style="cursor:pointer;">Print</a>
+</body>
+</html>
